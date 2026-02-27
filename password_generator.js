@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const useSpecial = specialCheckbox.checked;
 
         
-            
+        if (length < 8 || length > 20) {
+            mostrarError("La longitud debe estar entre 8 y 20 caracteres.");
+            return;
+        }
+
+       
         if (!useUppercase && !useLowercase && !useNumbers && !useSpecial) {
             mostrarError("Debes seleccionar al menos una opción.");
             return;
@@ -32,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         ocultarError();
 
-        
+       
         let characters = "";
         if (useUppercase) {
             characters = characters + uppercaseLetters;
@@ -47,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
             characters = characters + specialCharacters;
         }
 
-       
+        
         let password = "";
         for (let i = 0; i < length; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
