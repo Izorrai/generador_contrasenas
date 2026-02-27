@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     const lengthInput = document.getElementById("lengthInput");
     const passwordOutput = document.getElementById("passwordOutput");
-    const errorBox = document.getElementById("error");
     const generateBtn = document.getElementById("generateBtn");
     const generateAnotherBtn = document.getElementById("generateAnotherBtn");
     const resultSection = document.getElementById("resultSection");
+    const errorModal = document.getElementById("errorModal");
+    const errorModalMessage = document.getElementById("errorModalMessage");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const acceptErrorBtn = document.getElementById("acceptErrorBtn");
 
     const uppercaseCheckbox = document.getElementById("uppercase");
     const lowercaseCheckbox = document.getElementById("lowercase");
@@ -26,6 +29,21 @@ document.addEventListener("DOMContentLoaded", function() {
         generarContraseña();
     });
 
+    closeModalBtn.addEventListener("click", function() {
+        cerrarModal();
+    });
+
+    acceptErrorBtn.addEventListener("click", function() {
+        cerrarModal();
+    });
+
+    
+    errorModal.addEventListener("click", function(e) {
+        if (e.target === errorModal) {
+            cerrarModal();
+        }
+    });
+
     function generarContraseña() {
         const length = Number.parseInt(lengthInput.value, 10);
         const useUppercase = uppercaseCheckbox.checked;
@@ -42,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function() {
             mostrarError("Debes seleccionar al menos una opción.");
             return;
         }
-
-        ocultarError();
 
         let characters = "";
         if (useUppercase) {
@@ -71,12 +87,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function mostrarError(mensaje) {
-        errorBox.textContent = mensaje;
-        errorBox.classList.remove("hidden");
+        errorModalMessage.textContent = mensaje;
+        errorModal.classList.remove("hidden");
     }
 
-    function ocultarError() {
-        errorBox.textContent = "";
-        errorBox.classList.add("hidden");
+    function cerrarModal() {
+        errorModal.classList.add("hidden");
     }
 });

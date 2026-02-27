@@ -28,7 +28,7 @@
                         name="length"
                         class="size" 
                         min="8" 
-                        max="128" 
+                        max="20" 
                         value="10"
                         required
                         aria-describedby="lengthHelp"
@@ -65,23 +65,28 @@
                 </div>
             </fieldset>
 
-            <!-- Mensaje de error -->
-            <div 
-                id="error" 
-                class="error-box hidden" 
-                role="alert" 
-                aria-live="assertive"
-                aria-atomic="true">
-                <span class="error-icon">⚠</span>
-                <span class="error-message"></span>
-            </div>
-
             <!-- Botón generar -->
             <button type="button" class="btn btn-primary" id="generateBtn">
                 <span class="btn-text">Generar contraseña</span>
                 <span class="btn-icon">→</span>
             </button>
         </form>
+
+        <!-- Modal de error -->
+        <div id="errorModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Error</h2>
+                    <button type="button" class="modal-close" id="closeModalBtn">✕</button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorModalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="acceptErrorBtn">Aceptar</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Resultado -->
         <div id="resultSection" class="result-section hidden">
