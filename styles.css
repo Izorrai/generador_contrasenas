@@ -1,0 +1,174 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+    --color-light: #ffffff;
+    --color-dark: #000000;
+    --color-gray: #777;
+    --border-thin: 1px solid #000;
+    --font-main: 'Courier New', Courier, monospace;
+
+    --input-padding: 12px;
+    --section-spacing: 30px;
+}
+
+/* Layout general */
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Títulos */
+h1, h2 {
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Fieldset minimalista */
+fieldset {
+    border: var(--border-thin);
+    border-radius: 0;
+    padding: 20px;
+    margin-top: var(--section-spacing);
+    background: transparent;
+}
+
+legend {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0 6px;
+    font-weight: 400;
+}
+
+/* GRID de opciones (mobile first) */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input.size {
+    width: 100%;
+    padding: var(--input-padding);
+    border: var(--border-thin);
+    border-radius: 0;
+    font-family: var(--font-main);
+    font-size: 14px;
+    background: transparent;
+    outline: none;
+    margin-top: 10px;
+}
+
+input:focus {
+    border-color: var(--color-gray);
+}
+
+/* Checkboxes minimalistas */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border: var(--border-thin);
+    appearance: none;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--color-dark);
+}
+
+/* Botón */
+.btn {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border: var(--border-thin);
+    padding: 14px 28px;
+    width: 100%;
+    margin-top: var(--section-spacing);
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 0;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+/* Resultado */
+.result {
+    margin-top: var(--section-spacing);
+    padding: 20px;
+    border: var(--border-thin);
+}
+
+.password-box {
+    margin-top: 10px;
+    padding: 14px;
+    border: var(--border-thin);
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* Ocultar */
+.hidden {
+    display: none;
+}
+
+
+
+/* 768px */
+@media (min-width: 768px) {
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 1024px */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 700px;
+    }
+}
+
+/* 1921px */
+@media (min-width: 1921px) {
+    body {
+        padding: 80px;
+    }
+    .container {
+        max-width: 900px;
+    }
+}
+
+/* 2561px */
+@media (min-width: 2561px) {
+    body {
+        padding: 120px;
+    }
+    .container {
+        max-width: 1100px;
+    }
+}
