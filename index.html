@@ -1,57 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Contraseñas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
+
         <h1>Generador de Contraseñas</h1>
-        
 
-        <fieldset>
-            <legend>Longitud de la contraseña</legend>
-        <form id="form_password">
-            
-            <div class="form_size">
-                <label for="length"> Introduce un numero entre el 8 y el 20:</label>
-                <input class="size">
-               
+        <form id="form_password" aria-describedby="formDescription">
+            <p id="formDescription">
+                Selecciona la longitud y las opciones para generar una contraseña segura.
+            </p>
+
+            <fieldset>
+                <legend>Longitud de la contraseña</legend>
+
+                <div class="form_size">
+                    <label for="lengthInput">Introduce un número:</label>
+                    <input 
+                        type="number" 
+                        id="lengthInput" 
+                        name="length"
+                        class="size" 
+                        min="8" 
+                        max="20" 
+                        value="12"
+                        required
+                        aria-describedby="lengthHelp"
+                    >
+                    <span id="lengthHelp">Debe estar entre 8 y 20 caracteres.</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Opciones</legend>
+
+                <div class="options-grid">
+
+                    <label for="uppercase">
+                        <input type="checkbox" id="uppercase" name="uppercase" checked>
+                        Incluir mayúsculas
+                    </label>
+
+                    <label for="lowercase">
+                        <input type="checkbox" id="lowercase" name="lowercase" >
+                        Incluir minúsculas
+                    </label>
+
+                    <label for="numbers">
+                        <input type="checkbox" id="numbers" name="numbers" >
+                        Incluir números
+                    </label>
+
+                    <label for="special">
+                        <input type="checkbox" id="special" name="special">
+                        Incluir caracteres especiales
+                    </label>
+
+                </div>
+            </fieldset>
+
+            <div 
+                id="error" 
+                class="error hidden" 
+                role="alert" 
+                aria-live="assertive">
             </div>
-        </fieldset>
 
-        <fieldset>
-    <legend>Opciones</legend>
-
-    <div class="options-grid">
-        <label>
-            <input type="checkbox" id="uppercase">
-            Incluir mayúsculas 
-        </label>
-
-        <label>
-            <input type="checkbox" id="lowercase">
-            Incluir minúsculas 
-        </label>
-
-        <label>
-            <input type="checkbox" id="numbers">
-            Incluir números 
-        </label>
-
-        <label>
-            <input type="checkbox" id="special">
-            Incluir caracteres especiales
-        </label>
-    </div>
-</fieldset>
-
-                     
-            <button type="submit" class="btn">Generar</button>
+            <button type="submit" class="btn">Generar contraseña</button>
         </form>
 
-      
-         
+        <output 
+            id="passwordOutput" 
+            class="password-output hidden"
+            for="form_password"
+            aria-label="Contraseña generada">
+        </output>
+
+    </div>
 </body>
+</html>
