@@ -130,6 +130,23 @@ input[type="checkbox"]:checked {
     border: var(--border-thin);
     font-size: 16px;
     letter-spacing: 1px;
+    text-align: center;
+    word-break: break-all;
+}
+
+.result-section {
+    margin-top: var(--section-spacing);
+    padding: 20px;
+    border: var(--border-thin);
+    text-align: center;
+}
+
+.btn-generate {
+    margin-top: var(--section-spacing);
+}
+
+.btn-generate.hidden {
+    display: none;
 }
 
 /* Ocultar */

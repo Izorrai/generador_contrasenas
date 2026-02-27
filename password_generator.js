@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("form_password");
     const lengthInput = document.getElementById("lengthInput");
     const passwordOutput = document.getElementById("passwordOutput");
     const errorBox = document.getElementById("error");
+    const generateBtn = document.getElementById("generateBtn");
+    const generateAnotherBtn = document.getElementById("generateAnotherBtn");
+    const resultSection = document.getElementById("resultSection");
 
     const uppercaseCheckbox = document.getElementById("uppercase");
     const lowercaseCheckbox = document.getElementById("lowercase");
@@ -14,22 +16,28 @@ document.addEventListener("DOMContentLoaded", function() {
     const numbers = "0123456789";
     const specialCharacters = "!@#$%^&*()_-+=<>?/{}[]~";
 
-    form.addEventListener("submit", function(e) {
+    generateBtn.addEventListener("click", function(e) {
         e.preventDefault();
+        generarContraseña();
+    });
 
+    generateAnotherBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        generarContraseña();
+    });
+
+    function generarContraseña() {
         const length = Number.parseInt(lengthInput.value, 10);
         const useUppercase = uppercaseCheckbox.checked;
         const useLowercase = lowercaseCheckbox.checked;
         const useNumbers = numbersCheckbox.checked;
         const useSpecial = specialCheckbox.checked;
 
-        
         if (length < 8 || length > 20) {
             mostrarError("La longitud debe estar entre 8 y 20 caracteres.");
             return;
         }
 
-       
         if (!useUppercase && !useLowercase && !useNumbers && !useSpecial) {
             mostrarError("Debes seleccionar al menos una opción.");
             return;
@@ -37,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         ocultarError();
 
-       
         let characters = "";
         if (useUppercase) {
             characters = characters + uppercaseLetters;
@@ -52,18 +59,16 @@ document.addEventListener("DOMContentLoaded", function() {
             characters = characters + specialCharacters;
         }
 
-        
         let password = "";
         for (let i = 0; i < length; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
             password = password + characters[randomIndex];
         }
 
-        
         passwordOutput.textContent = password;
-        const resultSection = document.getElementById("resultSection");
         resultSection.classList.remove("hidden");
-    });
+        generateBtn.classList.add("hidden");
+    }
 
     function mostrarError(mensaje) {
         errorBox.textContent = mensaje;
