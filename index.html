@@ -28,8 +28,8 @@
                         name="length"
                         class="size" 
                         min="8" 
-                        max="20" 
-                        value="12"
+                        max="128" 
+                        value="10"
                         required
                         aria-describedby="lengthHelp"
                     >
@@ -48,12 +48,12 @@
                     </label>
 
                     <label for="lowercase">
-                        <input type="checkbox" id="lowercase" name="lowercase" >
+                        <input type="checkbox" id="lowercase" name="lowercase">
                         Incluir minúsculas
                     </label>
 
                     <label for="numbers">
-                        <input type="checkbox" id="numbers" name="numbers" >
+                        <input type="checkbox" id="numbers" name="numbers">
                         Incluir números
                     </label>
 
@@ -65,23 +65,42 @@
                 </div>
             </fieldset>
 
+            <!-- Mensaje de error -->
             <div 
                 id="error" 
-                class="error hidden" 
+                class="error-box hidden" 
                 role="alert" 
-                aria-live="assertive">
+                aria-live="assertive"
+                aria-atomic="true">
+                <span class="error-icon">⚠</span>
+                <span class="error-message"></span>
             </div>
 
-            <button type="submit" class="btn">Generar contraseña</button>
+            <!-- Botón generar -->
+            <button type="submit" class="btn btn-primary">
+                <span class="btn-text">Generar contraseña</span>
+                <span class="btn-icon">→</span>
+            </button>
         </form>
 
-        <output 
-            id="passwordOutput" 
-            class="password-output hidden"
-            for="form_password"
-            aria-label="Contraseña generada">
-        </output>
+        <!-- Resultado -->
+        <div id="resultSection" class="result-section hidden">
+            <div class="result-header">
+                <h2>Tu contraseña generada</h2>
+            </div>
+
+            <div class="password-display">
+                <output 
+                    id="passwordOutput" 
+                    class="password-box"
+                    for="form_password"
+                    aria-label="Contraseña generada">
+                </output>
+            </div>
+        </div>
 
     </div>
+
+    <script src="password_generator.js"></script>
 </body>
 </html>
