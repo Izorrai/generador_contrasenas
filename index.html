@@ -65,14 +65,13 @@
                 </div>
             </fieldset>
 
-            <!-- Botón generar -->
             <button type="button" class="btn btn-primary" id="generateBtn">
                 <span class="btn-text">Generar contraseña</span>
                 <span class="btn-icon">→</span>
             </button>
         </form>
 
-        <!-- Modal de error -->
+        
         <div id="errorModal" class="modal hidden">
             <div class="modal-content">
                 <div class="modal-header">
@@ -88,30 +87,34 @@
             </div>
         </div>
 
-        <!-- Resultado -->
+        
         <div id="resultSection" class="result-section hidden">
-            <div class="result-header">
-                <h2>Tu contraseña generada</h2>
-            </div>
-
-            <div class="password-display">
-                <output 
-                    id="passwordOutput" 
-                    class="password-box"
-                    for="form_password"
-                    aria-label="Contraseña generada">
-                </output>
-            </div>
-
-            <!-- Botón generar otra -->
-            <button type="button" class="btn btn-primary" id="generateAnotherBtn">
-                <span class="btn-text">Generar otra contraseña</span>
-                <span class="btn-icon">→</span>
-            </button>
-        </div>
-
+    <div class="result-header">
+        <h2>Tu contraseña generada</h2>
     </div>
 
-    <script src="password_generator.js"></script>
+    <div class="password-display">
+        <output id="passwordOutput" class="password-box"></output>
+        <button type="button" id="copyBtn" class="btn btn-secondary" title="Copiar al portapapeles">
+            Copiar
+        </button>
+    </div>
+    
+    <div id="strengthIndicator" class="strength-container">
+        <span>Fuerza: </span>
+        <span id="strengthText">-</span>
+        <div class="strength-bar-bg">
+            <div id="strengthBar" class="strength-bar"></div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="generateAnotherBtn">
+        <span class="btn-text">Generar otra contraseña</span>
+        <span class="btn-icon">→</span>
+    </button>
+</div>
+    </div>
+
+    <script type="module" src="password_generator.js"></script>
 </body>
 </html>
