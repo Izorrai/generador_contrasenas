@@ -14,8 +14,13 @@ Este proyecto es un Generador de Contraseñas robusto y altamente personalizable
 - **HTML5/CSS3:** Diseño con estética "Brutalista" centrado en la legibilidad.
 - **JavaScript (ES6+):** Lógica modular exportable para tests unitarios.
 - **Jest:** Framework de testing para asegurar la fiabilidad del algoritmo de fuerza.
+## 📦 Instalación y Uso
+1. Clona el repositorio.
+2. Abre el archivo `index.html` mediante un servidor local (ej. Live Server).
 
 ## 🧪 Testing y Calidad
 Para verificar la lógica de puntuación y generación, ejecuta:
 ```bash
 npm test tests/password.test.js
+
+
