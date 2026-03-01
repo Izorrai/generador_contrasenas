@@ -1,4 +1,4 @@
-// --- CONSTANTES Y LÓGICA DE NEGOCIO (Exportadas para Test) ---
+
 export const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
 export const numbers = "0123456789";
@@ -7,19 +7,19 @@ export const specialCharacters = "!@#$%^&*()_-+=<>?/{}[]~";
 export function evaluarFuerza(password) {
     let fuerza = 0;
 
-    // Aplicando regla SonarQube S6353: Usar cuantificadores y clases de caracteres concisos
+    
     if (password.length > 12) fuerza++;
     if (/[A-Z]/.test(password)) fuerza++;
     if (/[a-z]/.test(password)) fuerza++;
-    if (/\d/.test(password)) fuerza++; // Antes [0-9]
-    if (/\W|_/.test(password)) fuerza++; // Antes [^A-Za-z0-9], \W incluye todo lo que NO sea letra/número
+    if (/\d/.test(password)) fuerza++; 
+    if (/\W|_/.test(password)) fuerza++; 
 
     if (fuerza <= 2) return { texto: "Débil", clase: "fuerza-debil" };
     if (fuerza <= 4) return { texto: "Media", clase: "fuerza-media" };
     return { texto: "Fuerte", clase: "fuerza-fuerte" };
 }
 
-// --- LÓGICA DE INTERFAZ (DOM) ---
+
 if (typeof document !== 'undefined') {
     document.addEventListener("DOMContentLoaded", function() {
         const lengthInput = document.getElementById("lengthInput");
@@ -41,19 +41,19 @@ if (typeof document !== 'undefined') {
         const numbersCheckbox = document.getElementById("numbers");
         const specialCheckbox = document.getElementById("special");
 
-        // Eventos
+       
         generateBtn.addEventListener("click", (e) => { e.preventDefault(); generarContraseña(); });
         generateAnotherBtn.addEventListener("click", (e) => { e.preventDefault(); generarContraseña(); });
         closeModalBtn.addEventListener("click", cerrarModal);
         acceptErrorBtn.addEventListener("click", cerrarModal);
 
-        // --- LÓGICA DEL BOTÓN COPIAR ---
+       
         copyBtn.addEventListener("click", async () => {
             const password = passwordOutput.textContent;
             if (!password) return;
 
             try {
-                // globalThis para cumplir con SonarQube y evitar 'window'
+                
                 await globalThis.navigator.clipboard.writeText(password);
                 
                 const originalText = copyBtn.textContent;
