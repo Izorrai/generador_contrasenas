@@ -1,4 +1,4 @@
-import { evaluarFuerza, uppercaseLetters, lowercaseLetters, numbers, specialCharacters } from '../password_generator.js';
+import { evaluarFuerza, uppercaseLetters, lowercaseLetters, numbers, specialCharacters } from '../js/password_generator.js';
 
 describe('Ejercicio 1 - Pruebas del Generador de Contraseñas', () => {
 

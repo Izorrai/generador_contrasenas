@@ -234,9 +234,11 @@ input[type="checkbox"]:checked {
     margin-top: 10px;
 }
 
+/* Barra de colores
+
 .strength-bar-bg {
     height: 10px;
-    background-color: #eee; /* Color de fondo de la barra vacía */
+    background-color: #eee; 
     border: var(--border-thin);
     margin-top: 5px;
     width: 100%;
@@ -244,25 +246,27 @@ input[type="checkbox"]:checked {
 
 .strength-bar {
     height: 100%;
-    width: 0%; /* Empezamos en 0 */
+    width: 0%; 
     transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* Estas son las clases que el JS añade dinámicamente */
+
 .fuerza-debil { 
     width: 33% !important; 
-    background-color: #ff4d4d !important; /* Rojo */
+    background-color: #ff4d4d !important; 
 }
 
 .fuerza-media { 
     width: 66% !important; 
-    background-color: #ffd11a !important; /* Amarillo */
+    background-color: #ffd11a !important; 
 }
 
 .fuerza-fuerte { 
     width: 100% !important; 
-    background-color: #00cc66 !important; /* Verde */
+    background-color: #00cc66 !important; 
 }
+
+*/
 
 .btn-copy {
     padding: 5px 15px;
