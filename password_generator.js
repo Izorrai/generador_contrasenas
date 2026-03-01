@@ -6,16 +6,17 @@ export const specialCharacters = "!@#$%^&*()_-+=<>?/{}[]~";
 
 export function evaluarFuerza(password) {
     let fuerza = 0;
-
     
-    if (password.length > 12) fuerza++;
+    
+    if (password.length >= 10) fuerza++; 
     if (/[A-Z]/.test(password)) fuerza++;
     if (/[a-z]/.test(password)) fuerza++;
-    if (/\d/.test(password)) fuerza++; 
-    if (/\W|_/.test(password)) fuerza++; 
+    if (/\d/.test(password)) fuerza++;
+    if (/\W|_/.test(password)) fuerza++;
 
-    if (fuerza <= 2) return { texto: "Débil", clase: "fuerza-debil" };
-    if (fuerza <= 4) return { texto: "Media", clase: "fuerza-media" };
+   
+    if (fuerza <= 1) return { texto: "Débil", clase: "fuerza-debil" };
+    if (fuerza <= 3) return { texto: "Media", clase: "fuerza-media" };
     return { texto: "Fuerte", clase: "fuerza-fuerte" };
 }
 
