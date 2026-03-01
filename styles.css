@@ -227,6 +227,31 @@ input[type="checkbox"]:checked {
     padding: 10px 20px;
 }
 
+.strength-bar-container {
+    height: 8px;
+    background: #eee;
+    border: var(--border-thin);
+    margin-top: 10px;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s ease;
+}
+
+.fuerza-debil { width: 33%; background-color: #ff4d4d; }
+.fuerza-media { width: 66%; background-color: #ffd11a; }
+.fuerza-fuerte { width: 100%; background-color: #00cc66; }
+
+.btn-copy {
+    padding: 5px 15px;
+    background: white;
+    border: var(--border-thin);
+    cursor: pointer;
+    font-family: var(--font-main);
+}
+
 
 
 

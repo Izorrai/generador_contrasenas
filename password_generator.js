@@ -6,11 +6,13 @@ export const specialCharacters = "!@#$%^&*()_-+=<>?/{}[]~";
 
 export function evaluarFuerza(password) {
     let fuerza = 0;
+
+    // Aplicando regla SonarQube S6353: Usar cuantificadores y clases de caracteres concisos
     if (password.length > 12) fuerza++;
     if (/[A-Z]/.test(password)) fuerza++;
     if (/[a-z]/.test(password)) fuerza++;
-    if (/[0-9]/.test(password)) fuerza++;
-    if (/[^A-Za-z0-9]/.test(password)) fuerza++;
+    if (/\d/.test(password)) fuerza++; // Antes [0-9]
+    if (/\W|_/.test(password)) fuerza++; // Antes [^A-Za-z0-9], \W incluye todo lo que NO sea letra/número
 
     if (fuerza <= 2) return { texto: "Débil", clase: "fuerza-debil" };
     if (fuerza <= 4) return { texto: "Media", clase: "fuerza-media" };
@@ -18,7 +20,6 @@ export function evaluarFuerza(password) {
 }
 
 // --- LÓGICA DE INTERFAZ (DOM) ---
-// Usamos este if para que Jest no de error al no encontrar el 'document'
 if (typeof document !== 'undefined') {
     document.addEventListener("DOMContentLoaded", function() {
         const lengthInput = document.getElementById("lengthInput");
@@ -31,7 +32,6 @@ if (typeof document !== 'undefined') {
         const closeModalBtn = document.getElementById("closeModalBtn");
         const acceptErrorBtn = document.getElementById("acceptErrorBtn");
         
-        // Elementos nuevos para Copiar y Fuerza
         const copyBtn = document.getElementById("copyBtn");
         const strengthText = document.getElementById("strengthText");
         const strengthBar = document.getElementById("strengthBar");
@@ -53,12 +53,12 @@ if (typeof document !== 'undefined') {
             if (!password) return;
 
             try {
-                // Usamos globalThis por recomendación de SonarQube
+                // globalThis para cumplir con SonarQube y evitar 'window'
                 await globalThis.navigator.clipboard.writeText(password);
                 
                 const originalText = copyBtn.textContent;
                 copyBtn.textContent = "¡Copiado!";
-                copyBtn.style.backgroundColor = "#d4edda"; // Feedback visual rápido
+                copyBtn.style.backgroundColor = "#d4edda"; 
                 
                 setTimeout(() => {
                     copyBtn.textContent = originalText;
@@ -98,10 +98,10 @@ if (typeof document !== 'undefined') {
                 password += characters[randomIndex];
             }
 
-            // Mostrar resultado
+            
             passwordOutput.textContent = password;
             
-            // Actualizar Fuerza
+          
             const fuerza = evaluarFuerza(password);
             strengthText.textContent = fuerza.texto;
             strengthBar.className = `strength-bar ${fuerza.clase}`;
